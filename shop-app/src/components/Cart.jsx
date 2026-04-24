@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Cart({ items, onRemove, onClose, onUpdateQty }) {
-  const total = items.reduce((sum, item) => sum + item.price * item.count, 0);
+  const total = items.reduce((sum, item) => sum + item.price * item.qty, 0);
 
   return (
     <>
@@ -30,7 +30,7 @@ export default function Cart({ items, onRemove, onClose, onUpdateQty }) {
                       <button
                         className="qty-btn"
                         onClick={() => onUpdateQty(item.id, item.qty - 1)}
-                        disabled={item.qty <= 0}
+                        disabled={item.qty <= 1}
                       >−</button>
                       <span className="qty-value">{item.qty}</span>
                       <button
